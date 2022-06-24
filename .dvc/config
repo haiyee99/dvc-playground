@@ -1,0 +1,6 @@
+[core]
+    remote = googledrive
+['remote "googledrive"']
+    url = gdrive://1RZ4h8H_knbN7xfiB_zOBE9lXAMSEo3Ym
+['remote "gcs"']
+    url = gs://hyhy-playground/dvc-playground
