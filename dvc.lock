@@ -10,7 +10,7 @@ stages:
       md5: 25c9df282a787f1f40b63927dd79cb71
       size: 143
     - path: src/params.yaml
-      md5: a255b44fd84cacdf08a668ea45adb5dd
+      md5: ce3046968ae8e2c8f5ccca4994c08028
       size: 86
     - path: src/transform.py
       md5: 5fae7a85fae8c55c641c3092ce50f5d4
@@ -57,11 +57,11 @@ stages:
       size: 436
     params:
       src/params.yaml:
-        random_plot.seed: 1
+        random_plot.seed: 2
     outs:
     - path: metrics/metric.json
-      md5: 4e661d3defe0650517d078e59eab6c38
-      size: 65
+      md5: 3f8d9b8c1da66060964f5f3f5b84395d
+      size: 64
     - path: plots/plot.json
-      md5: 8a3bb0767cc433f8ae2483017a3e8eff
-      size: 6257
+      md5: 781f3d571a079d6149c022bae2cb6274
+      size: 6254

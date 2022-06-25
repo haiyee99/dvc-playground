@@ -4,4 +4,4 @@ transform:
   random_state: 5
 
 random_plot:
-  seed: 1
+  seed: 2
