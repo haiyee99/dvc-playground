@@ -1,0 +1,41 @@
+stages:
+  transform:
+    cmd: python src/transform.py
+    deps:
+    - data/data.csv
+    - src/common.py
+    - src/params.yaml
+    - src/transform.py
+    params:
+    - src/params.yaml:
+      - transform
+      - transform.train_size
+    outs:
+    - data/train.csv
+    - data/test.csv
+
+  describe:
+    cmd: python src/describe.py
+    deps:
+    - data/test.csv
+    - data/train.csv
+    - src/describe.py
+    outs:
+    - data/description.json
+
+  random_plot:
+    cmd: python src/random_plot.py
+    deps:
+    - src/common.py
+    - src/describe.py
+    params:
+    - src/params.yaml:
+      - random_plot.seed
+    metrics:
+    - metrics/metric.json:
+        cache: false
+    plots:
+    - plots/plot.json:
+        cache: false
+        x: x_axis
+        y: y_axis

@@ -1,0 +1,67 @@
+schema: '2.0'
+stages:
+  transform:
+    cmd: python src/transform.py
+    deps:
+    - path: data/data.csv
+      md5: 7a697d62c8d453a511b5383553185ef8
+      size: 2466410
+    - path: src/common.py
+      md5: 25c9df282a787f1f40b63927dd79cb71
+      size: 143
+    - path: src/params.yaml
+      md5: a255b44fd84cacdf08a668ea45adb5dd
+      size: 86
+    - path: src/transform.py
+      md5: 5fae7a85fae8c55c641c3092ce50f5d4
+      size: 842
+    params:
+      src/params.yaml:
+        transform:
+          train_size: 0.8
+          shuffle: true
+          random_state: 5
+        transform.train_size: 0.8
+    outs:
+    - path: data/test.csv
+      md5: 92786a6aa1f385f02e84174a999362e7
+      size: 500725
+    - path: data/train.csv
+      md5: 6f215dc4e15c6af7c63e3db5c4e09170
+      size: 2002416
+  describe:
+    cmd: python src/describe.py
+    deps:
+    - path: data/test.csv
+      md5: 92786a6aa1f385f02e84174a999362e7
+      size: 500725
+    - path: data/train.csv
+      md5: 6f215dc4e15c6af7c63e3db5c4e09170
+      size: 2002416
+    - path: src/describe.py
+      md5: bf6ecf0d2e86a6311384e8a96529df98
+      size: 436
+    outs:
+    - path: data/description.json
+      md5: 529a2e22e3c169e204b903fc73afd6ad
+      size: 72
+      isexec: true
+  random_plot:
+    cmd: python src/random_plot.py
+    deps:
+    - path: src/common.py
+      md5: 25c9df282a787f1f40b63927dd79cb71
+      size: 143
+    - path: src/describe.py
+      md5: bf6ecf0d2e86a6311384e8a96529df98
+      size: 436
+    params:
+      src/params.yaml:
+        random_plot.seed: 1
+    outs:
+    - path: metrics/metric.json
+      md5: 4e661d3defe0650517d078e59eab6c38
+      size: 65
+    - path: plots/plot.json
+      md5: 8a3bb0767cc433f8ae2483017a3e8eff
+      size: 6257
